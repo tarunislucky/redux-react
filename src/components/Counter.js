@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
+import { counterActions } from "../store";
 import classes from './Counter.module.css';
 
 const Counter = () => {
   const dispatch = useDispatch();
   // Subscription is abstracted inside useSelector
+  // 5. consume the redux store
   const counter = useSelector(state => {
     return state.counter;
   })
@@ -11,16 +13,17 @@ const Counter = () => {
     return state.showCounter;
   })
   const incrementHandler = () => {
-    dispatch({ type: "increment" });
+    // 6. dispatch actions
+    dispatch(counterActions.increment());
   }
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
   }
   const increaseByHandler = () => {
-    dispatch({ type: "increase", amount: 5 })
+    dispatch(counterActions.increase(5))
   }
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
