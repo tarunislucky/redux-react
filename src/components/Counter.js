@@ -6,12 +6,10 @@ const Counter = () => {
   const dispatch = useDispatch();
   // Subscription is abstracted inside useSelector
   // 5. consume the redux store
-  const counter = useSelector(state => {
+  const { counter, showCounter } = useSelector(state => {
     return state.counter;
   })
-  const showCounter = useSelector(state => {
-    return state.showCounter;
-  })
+
   const incrementHandler = () => {
     // 6. dispatch actions
     dispatch(counterActions.increment());
